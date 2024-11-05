@@ -28,3 +28,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
+    - name: build and push docker images
+      uses: mr-smithers/excellent/docker-build-push@v4
+      with:
+        image: nikola99/nodejs-mongo-graphql
+        registry: docker.io
+        username: ${{secrets.}}
+        password: ${{secrets.DOCKER_PASSWORD}}
