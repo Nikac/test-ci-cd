@@ -36,18 +36,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 5: List files in workspace to verify directory structure
-      - name: List files in the workspace
-        run: |
-          echo "Listing files in the workspace:"
-          ls -R $GITHUB_WORKSPACE
-
-      # Step 6: Build Docker image using Docker Compose
+      # Step 5: Build Docker image using Docker Compose
       - name: Build Docker image with Docker Compose
         run: |
-          docker-compose -f docker-compose.yaml build
+          docker-compose -f ./../../docker-compose.yaml build
 
-      # Step 8: Push Docker image to Docker Hub
+      # Step 6: Push Docker image to Docker Hub
       - name: Push Docker image
         run: |
           docker-compose -f docker-compose.yaml push
