@@ -33,5 +33,5 @@ jobs:
       with:
         image: nikola99/nodejs-mongo-graphql
         registry: docker.io
-        username: ${{secrets.}}
+        username: ${{secrets.DOCKER_USERNAME}}
         password: ${{secrets.DOCKER_PASSWORD}}
