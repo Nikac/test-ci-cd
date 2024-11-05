@@ -21,18 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Print current directory
-      run: pwd
-    
-    - name: Print environment variables
-      run: printenv
-    
-    - name: List files in the workspace
-      run: |
-        echo "Listing files in the workspace:"
-        ls -R $GITHUB_WORKSPACE
-  
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -47,11 +35,18 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: ../../Dockerfile
-        push: true
-        tags: docker.io/nikola99/nodejs-mongo-graphql:latest
-      
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+  
+    - name: Set up Docker Compose
+      run: sudo apt-get install docker-compose
+  
+    - name: Build and Push Docker Images with Docker Compose
+      run: |
+        # Build and push using docker-compose
+        docker-compose -f docker-compose.yaml build
+        docker-compose -f docker-compose.yaml push
+
+    - name: List Docker images after build
+      run: docker images
+    
