@@ -39,5 +39,6 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
+        file: ./Dockerfile
         push: true
         tags: docker.io/nikola99/nodejs-mongo-graphql:latest
