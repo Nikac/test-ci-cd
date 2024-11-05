@@ -21,6 +21,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Print current directory
+      run: pwd
+    
+    - name: Print environment variables
+      run: printenv
+    
+    - name: List files in the workspace
+      run: |
+        echo "Listing files in the workspace:"
+        ls -R $GITHUB_WORKSPACE
+  
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -42,9 +54,4 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: docker.io/nikola99/nodejs-mongo-graphql:latest
-    
-    - name: List files in the workspace
-      run: |
-        echo "Listing files in the workspace:"
-        ls -R $GITHUB_WORKSPACE
       
