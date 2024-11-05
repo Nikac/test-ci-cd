@@ -19,6 +19,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set working directory to root
+        run: cd /home/runner/work/test-ci-cd/test-ci-cd 
+
       # Step 2: Set up Docker Buildx for advanced build options (optional but useful)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
