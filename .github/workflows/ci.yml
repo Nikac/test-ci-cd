@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Docker Buildx for advanced build options (optional but useful)
+      # Step 2: Set up Docker Buildx (optional, but useful for advanced Docker features)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -29,6 +29,8 @@ jobs:
       # Step 4: Build Docker image using Docker Compose
       - name: Build Docker image with Docker Compose
         run: |
+          # Ensure you're in the root directory of the repo
+          cd $GITHUB_WORKSPACE  # Make sure to change directory to the root of the repo
           docker compose -f docker-compose.yaml build
 
       # Step 5: Push Docker image to Docker Hub
