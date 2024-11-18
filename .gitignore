@@ -33,7 +33,6 @@ Thumbs.db
 
 # Docker files (optional, if you have Dockerfiles and related configurations)
 docker-compose.override.yml
-Dockerfile*
 .docker/
 
 # Optional directories for testing tools or coverage reports
