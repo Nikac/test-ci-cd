@@ -15,7 +15,6 @@ import { expressMiddleware } from "@apollo/server/express4";
 import { authRouter } from "./routes/auth.router";
 
 dotenv.config();
-// adding comment for test
 
 const app = express();
 const port = process.env.PORT || 5000;
